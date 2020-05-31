@@ -6,10 +6,13 @@ import one.digitalInnovation.personapi.entity.Person;
 import one.digitalInnovation.personapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
+import org.springframework.http.HttpStatus;
 
 /*Controlador que vai ser acessado atraves deuma api rest*/
 @RestController
@@ -29,6 +32,7 @@ public class PersonService {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     //Resquesty ele ta vindo requisição do tipo pessoa
     public MessageResponseDTO createPerson(@RequestBody Person person){
     return personService.createPerson(person);
