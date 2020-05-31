@@ -3,6 +3,7 @@ import one.digitalInnovation.personapi.dto.response.MessageResponseDTO;
 import one.digitalInnovation.personapi.entity.Person;
 import one.digitalInnovation.personapi.repository.PersonRepository;
 import lombok.AllArgsConstructor;
+import org.aspectj.bridge.IMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +31,9 @@ public class PersonController {
     //Resquesty ele ta vindo requisição do tipo pessoa
     public MessageResponseDTO createPerson(@RequestBody Person person){
         Person savedPerson = personRepository.save(person);
-        return MessageResponseDTO.builder().build();
+        return MessageResponseDTO.
+                builder().
+                Message("Createad person with ID" + savedPerson.getId()).
+                build();
     }
 }
