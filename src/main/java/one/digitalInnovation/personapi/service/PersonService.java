@@ -51,4 +51,10 @@ public class PersonService {
                 .build();
 
     }
+    public List<PersonDTO> listAll(){
+        List<Person> allPeople = personRepository.findAll();
+        return  allPeople.stream()
+                .map(personMapper::toDTO)
+                .collect(Collectors.toList());
+    }
 }
